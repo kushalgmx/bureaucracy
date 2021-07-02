@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MVCWebForm.Models.TestPageSimpleFormPerson>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LegalName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreferredName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LegalName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreferredName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new TestPageSimpleFormPerson(item.Id, item.LegalName, item.PreferredName)) |
+                @*@Html.ActionLink("Details", "Details", new TestPageSimpleFormPerson(item.Id, item.LegalName, item.PreferredName)) |*@
+                Details (currently unavailable) |
+                @Html.ActionLink("Delete", "Delete", new TestPageSimpleFormPerson(item.Id, item.LegalName, item.PreferredName))
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
